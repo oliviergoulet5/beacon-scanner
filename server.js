@@ -1,8 +1,6 @@
 const BeaconScanner = require('node-beacon-scanner');
 const scanner = new BeaconScanner();
 
-const key = 'AIzaSyBcHWqAV0IFoTYNfTRoP_h0xB7nY3uLUVA';
-
 function calculateDistance(rssi) {
     const N = 4; 
     let txPower = -56;
