@@ -4,7 +4,7 @@ const scanner = new BeaconScanner();
 const key = 'AIzaSyBcHWqAV0IFoTYNfTRoP_h0xB7nY3uLUVA';
 
 function calculateDistance(rssi) {
-    const N = 4; // ((txPower – rssi) / (10 * N))
+    const N = 4; 
     let txPower = -56;
     return Math.pow(10, (txPower - rssi) / (10 * N));
 }
@@ -23,7 +23,7 @@ scanner.onadvertisement = (ad) => {
 
 scanner.startScan().then(() => {
     console.log('Started to scan.')  ;
-}).catch((error) => {
+}).catch(error => {
     console.error(error);
 });
 
