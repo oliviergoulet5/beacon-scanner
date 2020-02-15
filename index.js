@@ -1,23 +1,24 @@
 const BeaconScanner = require('node-beacon-scanner');
 const scanner = new BeaconScanner();
 
-console.log(scanner);
+const key = 'AIzaSyBcHWqAV0IFoTYNfTRoP_h0xB7nY3uLUVA';
 
-function calculateDistance(rssi, txPowerNeg) {
-    const N = 3; // ((txPower – rssi) / (10 * N))
-    let txPower = txPowerNeg * -1;
+function calculateDistance(rssi) {
+    const N = 4; // ((txPower – rssi) / (10 * N))
+    let txPower = -56;
     return Math.pow(10, (txPower - rssi) / (10 * N));
+}
+
+let beacons = {
+    'dd9b49e9cb7c49668d3d5fc6d4e68d4c': 1,
+    'e7cf8694a0ef425999034074b544a7df': 2
 }
 
 scanner.onadvertisement = (ad) => {
     if (ad.beaconType != 'iBeacon') {
-        console.log(JSON.stringify(ad, null, '  '));
-        console.log(ad.id);
+        if (ad.rssi !== undefined && ad.eddystoneUrl['txPower'] !== undefined)
+            console.log('beacon: ' + beacons[ad.id] + '\tdistance: ' + calculateDistance(ad.rssi) + '\t rssi: ' + ad.rssi);
     }
-    
-    console.log("Distance: ");
-    if (ad.rssi !== undefined && ad.eddystoneUrl.txPower !== undefined)
-        console.log(calculateDistance(ad.rssi, -21));
 };
 
 scanner.startScan().then(() => {
