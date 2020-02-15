@@ -3,6 +3,7 @@ import './App.css';
 
 import NavigationHeader from './NavigationHeader';
 import MapContainer from './MapContainer'
+import DevicesContainer from './DevicesContainer'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,6 +12,7 @@ function App() {
     <div className='App'>
       <NavigationHeader />
       <MapContainer />
+      <DevicesContainer />
     </div>
   );
 }
