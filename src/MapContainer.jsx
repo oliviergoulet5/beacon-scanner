@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
-import { render } from '@testing-library/react';
 
 const mapStyles = {
     width: '100%',
