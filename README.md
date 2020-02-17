@@ -1,4 +1,4 @@
-A Hack the Valley 4 submission
+A Hack the Valley 4 submission.<br />
 Our devpost: https://devpost.com/software/beacontracker
 
 ## Available Scripts
