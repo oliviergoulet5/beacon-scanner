@@ -1,5 +1,10 @@
+# beacon-scanner
 A Hack the Valley 4 submission.<br />
 Our devpost: https://devpost.com/software/beacontracker
+
+Our inspiration was Find My by Apple. It allows you to track your Apple devices and see them on a map giving you relevant information such as last time pinged, distance, etc. The main problem we tried to solve with this project was to keep track of young children on school field-trips. We wanted to send alerts to the supervising teacher when the child is far from range. It would report last known location (last ping) and show the last location on a map. 
+
+
 
 ## Available Scripts
 
