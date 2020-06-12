@@ -6,6 +6,9 @@ const HTTP_PORT = process.env.HTTP_PORT || 8080;
 let express = require('express');
 let app = express();
 
+var cors = require('cors');
+app.use(cors());
+
 function calculateDistance(rssi) {
     const N = 4; 
     let txPower = -56;
@@ -17,16 +20,6 @@ let beacons = {
     'e7cf8694a0ef425999034074b544a7df': 2
 }
 
-/*scanner.onadvertisement = (ad) => {
-    if (ad.beaconType !== 'iBeacon') {
-        if (ad.rssi !== undefined && ad.eddystoneUrl['txPower'] !== undefined) {
-
-            console.log('beacon: ' + beacons[ad.id] + '\tdistance: ' + calculateDistance(ad.rssi) + '\t rssi: ' + ad.rssi);
-            
-        }
-    }
-};*/
-
 scanner.startScan().then(() => {
     console.log('Started to scan.')  ;
 }).catch(error => {
@@ -34,8 +27,7 @@ scanner.startScan().then(() => {
 });
 
 // Routes
-app.get('/', (req, res) => {
-    console.log('got');
+app.get('/', cors(), (req, res) => {
     let promise = new Promise((resolve, reject) => {
         scanner.onadvertisement = (ad) => {
             if (ad.beaconType !== 'iBeacon') {
@@ -56,7 +48,6 @@ app.get('/', (req, res) => {
 app.listen(HTTP_PORT, () => {
     console.log('Listening on port ' + HTTP_PORT);
 })
-
 
 /*
 {
